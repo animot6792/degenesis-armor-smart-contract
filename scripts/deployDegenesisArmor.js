@@ -6,19 +6,16 @@
 // global scope, and execute the script.
 const hre = require("hardhat");
 
+const degenesisAddress = "0x6199f109A7D9673aa09a3425AA6AF80D8ef63D14";
+const baseUri = "ipfs://bafybeibqtmvi55pxlomxpmp2x5y6cfkcj7usd52g2ntcgpzq6eqwjrz3z4/";
+
 async function main() {
-  const payments = [0xE8F8eD5E4E07bb87330780269f4147B6113b8a8B, 0xa35fa69E715975128c659e04B0D5f6FE26422f28];
-  const shares = [80, 20];
-  const baseUri = "https://ipfs.io/ipfs/QmNyfoZKitFgVcrZcbQTSqA4n415pSviHqxh7sGycwZMtL/";
+  const degenesisArmor = await ethers.getContractFactory("DegenesisArmor");
+  const degenesisArmorInstance = await upgrades.deployProxy(degenesisArmor, [degenesisAddress, baseUri], { initializer: 'initialize' });
 
-  const mochiMo = await hre.ethers.getContractFactory("MochiMo");
-  const mochiMoInstance = await mochiMo.deploy(payments, shares, baseUri);
+  await degenesisArmorInstance.deployed();
 
-  await mochiMoInstance.deployed();
-
-  console.log(
-    "Smart Contract with baseUri ${baseUri} deployed to ${mochiMoInstance.address}"
-  );
+  console.log("Smart Contract with deployed to " + degenesisArmorInstance.address);
 }
 
 // We recommend this pattern to be able to use async/await everywhere
