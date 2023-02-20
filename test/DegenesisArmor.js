@@ -35,7 +35,7 @@ describe("Degenesis Armor airdrop testing", function () {
       degenesisArmorInstance.airdropToDegenesisOwners(0, 0, 1)
     ).revertedWith("Reached minting limit!");
 
-    expect(await degenesisArmorInstance.numMinted()).to.equal(300);
+    expect(await degenesisArmorInstance.totalSupply()).to.equal(300);
     expect(await degenesisInstance.ownerOf(1) == await degenesisArmorInstance.ownerOf(1));
 
   });
@@ -66,7 +66,7 @@ describe("Degenesis Armor airdrop testing", function () {
     // Correct airdrop
     await degenesisArmorInstance.airdropToDegenesisOwners(0, 299, 1);
 
-    expect(await degenesisArmorInstance.numMinted()).to.equal(300);
+    expect(await degenesisArmorInstance.totalSupply()).to.equal(300);
     // Airdrop of burned token was send to owner wallet
     expect(developer == await degenesisArmorInstance.ownerOf(1));
 
