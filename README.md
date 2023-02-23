@@ -5,6 +5,7 @@ The contract is build on
 
 - [ERC721A Upgrade](https://github.com/chiru-labs/ERC721A-Upgradeable) implementation of IERC721 with significant gas savings for minting multiple NFTs in a single transaction
 - [OpenZeppelin Upgrade](https://github.com/OpenZeppelin/openzeppelin-upgrades) libraries for secure smart contract development
+- [Operator Filter Registry](https://github.com/ProjectOpenSea/operator-filter-registry) from OpenSea for enforcing creator earnings
 
 ## Quickstart
 
