@@ -3,6 +3,7 @@
 This repository contains the smart contract for the Degenesis Armor, a test for that contract, and a script that deploys that contract.
 The contract is build on
 
+- [ERC721A Upgrade](https://github.com/chiru-labs/ERC721A-Upgradeable) implementation of IERC721 with significant gas savings for minting multiple NFTs in a single transaction
 - [OpenZeppelin Upgrade](https://github.com/OpenZeppelin/openzeppelin-upgrades) libraries for secure smart contract development
 
 ## Quickstart
@@ -27,7 +28,13 @@ npx hardhat test
 ### Deploying
 
 ```
-npx hardhat run scripts/deploy.js
+npx hardhat run scripts/deployDegenesisArmor.js
+```
+
+### Verifying
+
+```
+npx hardhat verify --network <NETWORK> <CONTRACT_ADDRESS> <CONSTRUCTOR_PARAMETERS>
 ```
 
 ### Auditing
@@ -51,3 +58,15 @@ For a static analysis you can use
 ```
 slither . --solc-remaps "@openzeppelin=node_modules/@openzeppelin"
 ```
+
+## Deployment costs
+
+The following table shows the expected deployment costs depending on the gas price.
+
+**Exchange rate**: $1653.33 USD/ETH
+
+|                         | 20 gwei/gas             | 30 gwei/gas             | 40 gwei/gas             | 50 gwei/gas               | 60 gwei/gas               |
+| ----------------------- | ----------------------- | ----------------------- | ----------------------- | ------------------------- | ------------------------- |
+| **Contract Deployment** | 0.064 ETH ($106.05)     | 0.096 ETH ($159.08)     | 0.128 ETH ($212.10)     | 0.160 ETH ($265.12)       | 0.192 ETH ($318.14)       |
+| **Airdrop**             | 0.180 ETH ($296.99)     | 0.270 ETH ($445.51)     | 0.360 ETH ($594.01)     | 0.450 ETH ($742.48)       | 0.539 ETH ($890.98)       |
+| **Total**               | **0.224 ETH ($403.04)** | **0.366 ETH ($604.59)** | **0.488 ETH ($806.11)** | **0.610 ETH ($1,007.60)** | **0.731 ETH ($1,209.16)** |

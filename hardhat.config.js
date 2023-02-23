@@ -24,7 +24,6 @@ module.exports = {
     }
   },
   etherscan: {
-    // npx hardhat verify --network <NETWORK> <CONTRACT_ADDRESS> <CONSTRUCTOR_PARAMETERS>
     apiKey: {
       goerli: ETHERSCAN_API_KEY,
       mainnet: ETHERSCAN_API_KEY
@@ -33,7 +32,7 @@ module.exports = {
   gasReporter: {
     enabled: (process.env.GAS_REPORT) ? true : false,
     currency: "USD",
-    gasPrice: 21,
+    gasPrice: 20,
     coinmarketcap: COINMARKETCAP_API_KEY
   },
   solidity: {
